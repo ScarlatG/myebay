@@ -24,7 +24,10 @@ public class Ruolo {
 	private String codice;
 
 	public Ruolo() {
+	}
 
+	public Ruolo(Long id) {
+		this.id = id;
 	}
 
 	public Ruolo(Long id, String descrizione, String codice) {
