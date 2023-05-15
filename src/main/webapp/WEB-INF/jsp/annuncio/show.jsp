@@ -44,9 +44,15 @@
 					    	</dl>
 					    	
 					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Data creazione:</dt>
-							  <dd class="col-sm-9"><fmt:formatDate type = "date" value = "${show_annuncio_attr.data}" /></dd>
+					    	<td><fmt:parseDate value="${annuncioItem.dataCreazione}"
+								pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date" />
+								<fmt:formatDate pattern="dd/MM/yyyy"
+								value="${localDateToBeParsed}" /></td>
+								<td>
 					    	</dl>
+					    	
+					    	
+					    	
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Categorie:</dt>
