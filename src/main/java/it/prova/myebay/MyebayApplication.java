@@ -1,6 +1,6 @@
 package it.prova.myebay;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -54,7 +54,8 @@ public class MyebayApplication implements CommandLineRunner {
 		// password non lo
 		// faccio qui perche gia lo fa il service di utente, durante inserisciNuovo
 		if (utenteServiceInstance.findByUsername("admin") == null) {
-			Utente admin = new Utente("admin", "admin", "Mario", "Rossi", new Date());
+			LocalDate dataDiCreazione = LocalDate.now();
+			Utente admin = new Utente("admin", "admin", "Mario", "Rossi", dataDiCreazione);
 			admin.getRuoli().add(ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", "ROLE_ADMIN"));
 			utenteServiceInstance.inserisciNuovo(admin);
 			// l'inserimento avviene come created ma io voglio attivarlo
@@ -62,7 +63,8 @@ public class MyebayApplication implements CommandLineRunner {
 		}
 
 		if (utenteServiceInstance.findByUsername("user") == null) {
-			Utente classicUser = new Utente("user", "user", "Antonio", "Verdi", new Date());
+			LocalDate dataDiCreazione = LocalDate.now();
+			Utente classicUser = new Utente("user", "user", "Antonio", "Verdi", dataDiCreazione);
 			classicUser.getRuoli()
 					.add(ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", "ROLE_CLASSIC_USER"));
 			utenteServiceInstance.inserisciNuovo(classicUser);
@@ -71,7 +73,8 @@ public class MyebayApplication implements CommandLineRunner {
 		}
 
 		if (utenteServiceInstance.findByUsername("user1") == null) {
-			Utente classicUser1 = new Utente("user1", "user1", "Antonioo", "Verdii", new Date());
+			LocalDate dataDiCreazione = LocalDate.now();
+			Utente classicUser1 = new Utente("user1", "user1", "Antonioo", "Verdii", dataDiCreazione);
 			classicUser1.getRuoli()
 					.add(ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", "ROLE_CLASSIC_USER"));
 			utenteServiceInstance.inserisciNuovo(classicUser1);
@@ -80,7 +83,8 @@ public class MyebayApplication implements CommandLineRunner {
 		}
 
 		if (utenteServiceInstance.findByUsername("user2") == null) {
-			Utente classicUser2 = new Utente("user2", "user2", "Antoniooo", "Verdiii", new Date());
+			LocalDate dataDiCreazione = LocalDate.now();
+			Utente classicUser2 = new Utente("user2", "user2", "Antoniooo", "Verdiii", dataDiCreazione);
 			classicUser2.getRuoli()
 					.add(ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", "ROLE_CLASSIC_USER"));
 			utenteServiceInstance.inserisciNuovo(classicUser2);

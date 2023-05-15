@@ -83,4 +83,39 @@ public class UtenteServiceImpl implements UtenteService {
 		return repository.findByExample(example);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Utente findByUsernameAndPassword(String username, String password) {
+		return repository.findByUsernameAndPassword(username, password);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Utente eseguiAccesso(String username, String password) {
+		return repository.findByUsernameAndPasswordAndStato(username, password, StatoUtente.ATTIVO);
+	}
+
+
+	@Override
+	@Transactional
+	public void changeUserAbilitation(Long utenteInstanceId) {
+		Utente utenteInstance = caricaSingoloElemento(utenteInstanceId);
+		if (utenteInstance == null)
+			throw new RuntimeException("Elemento non trovato.");
+
+		if (utenteInstance.getStato() == null || utenteInstance.getStato().equals(StatoUtente.CREATO))
+			utenteInstance.setStato(StatoUtente.ATTIVO);
+		else if (utenteInstance.getStato().equals(StatoUtente.ATTIVO))
+			utenteInstance.setStato(StatoUtente.DISABILITATO);
+		else if (utenteInstance.getStato().equals(StatoUtente.DISABILITATO))
+			utenteInstance.setStato(StatoUtente.ATTIVO);
+
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Utente findByUsername(String username) {
+		return repository.findByUsername(username).orElse(null);
+	}
+
 }
