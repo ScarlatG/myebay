@@ -101,7 +101,7 @@ public class AnnuncioController {
 	@RequestMapping("/listUtente")
 	public String listAnnunciUtente(HttpServletRequest request, Annuncio annuncioExample, ModelMap model) {
 		UtenteDTO utenteInSessione = (UtenteDTO) request.getSession().getAttribute("userInfo");
-		annuncioExample.setUtente(utenteInSessione.buildUtenteModel(false));
+		annuncioExample.setUtente(utenteInSessione.buildUtenteModel(true));
 		model.addAttribute("annunci_list_attribute", AnnuncioDTO
 				.createAnnuncioDTOFromModelList(annuncioService.findByExampleEager(annuncioExample), true, false));
 
