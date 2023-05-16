@@ -40,13 +40,12 @@ public class CustomAuthenticationSuccessHandlerImpl implements AuthenticationSuc
 		request.getSession().setAttribute("userInfo", utenteParziale);
 
 		String idAnnuncioWithNoAuthParam = request.getParameter("idAnnuncioWithNoAuth");
-		System.out.println("maledetto   " + idAnnuncioWithNoAuthParam);
 		if (StringUtils.isNotBlank(idAnnuncioWithNoAuthParam) && NumberUtils.isCreatable(idAnnuncioWithNoAuthParam)) {
 			Long idAnnuncioWithNoAuth = Long.parseLong(idAnnuncioWithNoAuthParam);
 			response.sendRedirect("/annuncio/show/" + idAnnuncioWithNoAuth);
 			return;
 		}
-
+		
 		response.sendRedirect("home");
 
 	}

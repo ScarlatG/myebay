@@ -1,21 +1,20 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
-<html lang="it" class="h-100" >
+<html lang="it" class="h-100">
 <head>
 	<jsp:include page="../header.jsp" />
 	<title>Ricerca</title>
 	
-    
 </head>
 <body class="d-flex flex-column h-100">
 	<!-- Fixed navbar -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
+	<jsp:include page="../navbar.jsp" />
 	
 	<!-- Begin page content -->
 	<main class="flex-shrink-0">
 	  <div class="container">
 	
-			<div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}" role="alert">
+			<div class="alert alert-danger alert-dismissible fade show ${not empty errorMessage ? '' : 'd-none'}" role="alert">
 			  ${errorMessage}
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			    <span aria-hidden="true">&times;</span>

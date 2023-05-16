@@ -15,7 +15,7 @@
 <body class="d-flex flex-column h-100">
 
 	<!-- Fixed navbar -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
+	<jsp:include page="../navbar.jsp" />
 
 
 	<!-- Begin page content -->
@@ -45,13 +45,13 @@
 					</dl>
 
 					<dl class="row">
+						<dt class="col-sm-3 text-right">Data Acquisto:</dt>
+
 						<td><fmt:parseDate value="${show_acquisto_attr.data}"
 								pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date" /> <fmt:formatDate
 								pattern="dd/MM/yyyy" value="${localDateToBeParsed}" /></td>
 						<td>
 					</dl>
-
-
 					<!-- end card body -->
 				</div>
 

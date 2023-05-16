@@ -56,15 +56,14 @@ public class LoginController {
 
 	@RequestMapping(value = "/executeLogout", method = RequestMethod.GET)
 	public String logoutPage(Model model, HttpServletRequest request, HttpServletResponse response) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		// dovrebbe essere già impostato a null dalle impostazioni
-		// invalidateHttpSession(true)
-		// nel SecSecurityConfig ma il controllo si fa comunque
-		if (auth != null) {
-			new SecurityContextLogoutHandler().logout(request, response, auth);
-		}
-		model.addAttribute("infoMessage", "You have been successfully logged out !!");
-		return "login";
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    if (auth != null) {
+	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	    }
+	    model.addAttribute("infoMessage", "You have been successfully logged out !!");
+
+	    // Redirect the user to the login page
+	    return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/accessDenied", method = { RequestMethod.POST, RequestMethod.GET })
